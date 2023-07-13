@@ -4,15 +4,16 @@ import Data from "./Letter";
 import Chart from "./Chart";
 import Nav from "./Nav";
 import Describe from "./Describe";
+import Video from "./Video";
 import { DashboardStyle, Box } from "./DashboardStyle";
 
 const Dashboard = () => {
   return (
-    <Container>
-      <Grid item>
-        <SelectBox />
+    <Container style={{ position: "relative" }}>
+      <Grid>
+        <SelectBox style={{ zIndex: -1 }} />{" "}
       </Grid>
-      <Grid item>
+      <Grid>
         <Data />
       </Grid>
       <Box>
@@ -25,6 +26,9 @@ const Dashboard = () => {
       </Box>
       <Grid>
         <Describe />
+      </Grid>
+      <Grid>
+        <Video />
       </Grid>
     </Container>
   );
