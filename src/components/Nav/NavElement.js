@@ -4,7 +4,6 @@ export const PrimaryNav = styled.div`
   width: 466.668px;
   height: 47px;
   display: flex;
-  position: relative;
 `;
 export const Menu = styled.nav`
   margin: 1px;

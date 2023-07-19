@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 const LetterStyle = styled.div`
-  width: 1050px;
   height: 120px;
-  flex-shrink: 0;
+  width: 100%;
+  flex-shrink: 1;
   border-radius: 3px;
   border: 1px solid #ebeff4;
   color: #090909;
   text-align: center;
-  display: table-cell;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 30px;
   font-family: Poppins;
   font-style: normal;

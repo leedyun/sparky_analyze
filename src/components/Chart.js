@@ -12,11 +12,13 @@ const Chart = () => {
     options: {
       chart: {
         height: 300,
-        type: "line",
+        type: "area",
         zoom: {
           enabled: false,
         },
-        colors: ["rgba(81, 0, 206, 0.1)"],
+        toolbar: {
+          show: false,
+        },
       },
       dataLabels: {
         enabled: false,
@@ -30,7 +32,7 @@ const Chart = () => {
           opacity: 1,
         },
       },
-      colors: ["rgba(81, 0, 206, 1)"],
+      colors: ["#5100CE"], // 그라데이션 효과를 제거하고 단일 색상으로 설정
       yaxis: {
         opposite: true,
         forceNiceScale: true,
@@ -42,14 +44,13 @@ const Chart = () => {
 
   return (
     <div
-      style={{ height: 253, borderTop: "1px solid #EBEFF4", paddingTop: 10 }}
+      style={{ height: 253, borderTop: "1px solid #EBEFF4", paddingTop: 15 }}
     >
       <ReactApexChart
         options={chartData.options}
         series={chartData.series}
-        type="line"
+        type="area"
         height={215}
-        width={1050}
       />
     </div>
   );

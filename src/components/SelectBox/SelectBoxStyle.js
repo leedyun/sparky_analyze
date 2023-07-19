@@ -4,12 +4,13 @@ export const SelectBoxStyle = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const Header = styled.div`
   display: flex;
+  width: 120px;
   height: 53px;
-  width: 105px;
   align-items: center;
   color: var(--light-main-text, #090909);
   font-size: 16px;
@@ -22,6 +23,9 @@ export const Header = styled.div`
 
 export const ListContainer = styled.div`
   display: flex;
+  position: absolute;
+  top: 42px;
+  z-index: 1;
   width: 105px;
   height: 66px;
   border-radius: 3px;
