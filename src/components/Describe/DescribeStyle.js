@@ -20,4 +20,5 @@ export const Sub = styled.div`
   line-height: normal;
   letter-spacing: 0.14px;
   margin-top: 12px;
+  min-width: 680px;
 `;

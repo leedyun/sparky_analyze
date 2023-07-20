@@ -51,19 +51,48 @@ export const Date = styled.td`
   font-weight: 700;
 `;
 
+export const Sub = styled.div`
+  display: flex;
+  margin-top: 36px;
+  margin-bottom: 45px;
+  justify-content: space-between;
+  font-family: Poppins;
+  font-style: normal;
+  line-height: normal;
+  align-items: center;
+`;
 export const More = styled.div`
   color: #065fd4;
   font-size: 18px;
-  font-family: Poppins;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: 0.18px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  margin-top: 36px;
   .img {
+    display: flex;
     width: 24px;
     height: 24px;
     flex-shrink: 0;
+  }
+`;
+export const Index = styled.button`
+  margin-left: 8px;
+  cursor: pointer;
+  padding: 1px 7px;
+  gap: 10px;
+  border-radius: 2px;
+  border: 1px solid var(--neutral-5, #d9d9d9);
+  background: var(--neutral-1, #fff);
+  width: 32px;
+  height: 30px;
+  color: var(--character-primary-65, rgba(0, 0, 0, 0.65));
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  &:hover,
+  &.active {
+    background: var(--light-point, #5100ce);
+    color: var(--dark-main-text, #f5f6f8);
   }
 `;

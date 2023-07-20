@@ -10,7 +10,7 @@ export const SelectBoxStyle = styled.div`
 export const Header = styled.div`
   display: flex;
   width: 120px;
-  height: 53px;
+  height: 66px;
   align-items: center;
   color: var(--light-main-text, #090909);
   font-size: 16px;

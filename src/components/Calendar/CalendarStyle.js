@@ -1,27 +1,30 @@
 import styled from "styled-components";
 
+export const CalendarStyle = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+`;
+
 export const DateBox = styled.div`
   color: var(--light-main-text, #090909);
-  display: flex;
-  flex-direction: column;
-  text-align: right;
+  height: 66px;
   font-size: 14px;
   font-family: Poppins;
   font-style: normal;
   line-height: 130%;
   letter-spacing: 0.14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   cursor: pointer;
-  margin-top: 12px;
-  margin-bottom: 12px;
   .date {
     font-weight: 400;
-    display: flex;
     align-items: center;
-    justify-content: flex-end;
+    display: flex;
   }
   .past {
     font-weight: 700;
-    align-itesm: center;
   }
 `;
 

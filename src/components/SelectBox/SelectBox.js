@@ -23,11 +23,7 @@ const SelectBox = () => {
     <SelectBoxStyle>
       <Header onClick={toggling}>
         {selectedOption || "게임 동영상"}
-        {isOpen ? (
-          <img src="/downArrow.jpg" alt="img" />
-        ) : (
-          <img src="/downArrow.jpg" alt="img" />
-        )}
+        <img src="/downArrow.jpg" alt="img" />
       </Header>
       {isOpen && (
         <ListContainer>

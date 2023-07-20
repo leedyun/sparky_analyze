@@ -17,9 +17,22 @@ const LetterStyle = styled.div`
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.3px;
+  min-width: 500px;
   span {
     color: rgba(234, 51, 35, 1);
   }
+  p {
+    color: var(--light-sub-text-icon, #334d6e);
+    text-align: center;
+    font-size: 16px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+  }
 `;
+
+export const Box = styled.div``;
 
 export default LetterStyle;

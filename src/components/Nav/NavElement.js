@@ -5,7 +5,7 @@ export const PrimaryNav = styled.div`
   height: 47px;
   display: flex;
 `;
-export const Menu = styled.nav`
+export const Menu = styled.button`
   margin: 1px;
   width: 116.667px;
   height: 47px;
@@ -23,13 +23,13 @@ export const Menu = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  border: none;
 
+  &:hover,
+  &:focus,
+  &.active,
   &:active {
-    border-radius: 3px 0px 0px 0px;
-    background: var(--bg-2, #fcfcfc);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-  }
-  &:hover {
     border-radius: 3px 0px 0px 0px;
     background: var(--bg-2, #fcfcfc);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);

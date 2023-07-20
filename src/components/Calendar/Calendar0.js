@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format, differenceInDays } from "date-fns";
-import "./Calendar.css";
 import { ko } from "date-fns/esm/locale";
 import {
+  CalendarStyle,
   DateBox,
   Box,
   ButtonBox,
@@ -59,7 +59,7 @@ const CustomHeader = ({
     </div>
   );
 };
-const Calendar0 = ({ startDates, endDates, onDateRangeChange }) => {
+const Calendar0 = ({ onDateRangeChange }) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
@@ -106,16 +106,12 @@ const Calendar0 = ({ startDates, endDates, onDateRangeChange }) => {
   };
 
   return (
-    <div>
+    <CalendarStyle>
       <DateBox onClick={handleCustomSelection}>
         <div className="date">
           {formatDate(startDate)}
           &nbsp;~&nbsp;{formatDate(endDate || startDate)}
-          <img
-            src="/downArrow.jpg"
-            alt="img"
-            style={{ width: 24, height: 24 }}
-          />
+          <img src="/downArrow.jpg" alt="img" className="img" />
         </div>
         <div className="past">지난 {getSelectedDays(startDate, endDate)}일</div>
       </DateBox>
@@ -188,7 +184,7 @@ const Calendar0 = ({ startDates, endDates, onDateRangeChange }) => {
           </ButtonBox>
         </Box>
       )}
-    </div>
+    </CalendarStyle>
   );
 };
 
