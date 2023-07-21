@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format, differenceInDays } from "date-fns";
@@ -10,59 +10,45 @@ import {
   ButtonBox,
   Title,
   CalendarContainer,
+  Arrow,
 } from "./CalendarStyle";
+import CustomPrevArrow from "./CustomPrevArrow";
+import CustomNextArrow from "./CustomNextArrow";
 
-const CustomHeader = ({
-  monthDate,
-  decreaseMonth,
-  increaseMonth,
-  prevMonthButtonDisabled,
-  nextMonthButtonDisabled,
-}) => {
+const CustomHeader = ({ monthDate }) => {
   return (
     <div>
       <Title>
-        <button
-          onClick={decreaseMonth}
-          disabled={prevMonthButtonDisabled}
-          style={{
-            width: 24,
-            height: 24,
-            border: "none",
-            background: "none",
-            position: "absolute",
-            left: 0,
-          }}
-        >
-          <img src="leftArrow.png" alt="left" />
-        </button>
         {monthDate.getFullYear()}년 {monthDate.getMonth() + 1}월
-        <button
-          onClick={increaseMonth}
-          disabled={nextMonthButtonDisabled}
-          style={{
-            width: 24,
-            height: 24,
-            border: "none",
-            background: "none",
-            position: "absolute",
-            right: 0,
-          }}
-        >
-          <img
-            src="rightArrow.png"
-            alt="right"
-            style={{ width: 24, height: 24 }}
-          />
-        </button>
       </Title>
     </div>
   );
 };
+
 const Calendar0 = ({ onDateRangeChange }) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
+  const [calendarIndex, setCalendarIndex] = useState(1);
+  const [monthsShown, setMonthsShown] = useState(3);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      if (window.innerWidth <= 760) {
+        setMonthsShown(1);
+      } else {
+        setMonthsShown(3);
+      }
+    };
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+  const handleMonthChange = (date) => {
+    setCalendarIndex(date.getMonth());
+  };
 
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -97,6 +83,7 @@ const Calendar0 = ({ onDateRangeChange }) => {
     setShowCalendar(false);
     onDateRangeChange(new Date(), null);
   };
+
   const getSelectedDays = (startDate, endDate) => {
     if (endDate) {
       const days = differenceInDays(endDate, startDate) + 1;
@@ -116,7 +103,7 @@ const Calendar0 = ({ onDateRangeChange }) => {
         <div className="past">지난 {getSelectedDays(startDate, endDate)}일</div>
       </DateBox>
       {showCalendar && (
-        <Box>
+        <Box showCalendar={showCalendar}>
           <CalendarContainer>
             <DatePicker
               dateFormat="yyyy-MM-dd"
@@ -124,28 +111,46 @@ const Calendar0 = ({ onDateRangeChange }) => {
               onChange={onChange}
               startDate={startDate}
               endDate={endDate}
-              monthsShown={3}
+              monthsShown={monthsShown}
               locale={ko}
               selectsRange
               inline
               calendarClassName="date-picker-calendar"
+              customInput={<div />}
               renderCustomHeader={({
                 monthDate,
                 decreaseMonth,
                 increaseMonth,
                 prevMonthButtonDisabled,
                 nextMonthButtonDisabled,
-                calendarIndex,
+                ...props
               }) => (
                 <CustomHeader
                   monthDate={monthDate}
-                  decreaseMonth={decreaseMonth}
-                  increaseMonth={increaseMonth}
                   prevMonthButtonDisabled={prevMonthButtonDisabled}
                   nextMonthButtonDisabled={nextMonthButtonDisabled}
+                  onDecreaseMonth={decreaseMonth}
+                  onIncreaseMonth={increaseMonth}
                 />
               )}
+              onMonthChange={handleMonthChange}
             />
+            <Arrow>
+              <CustomPrevArrow
+                onClick={() => {
+                  const prevMonth = new Date(startDate);
+                  prevMonth.setMonth(prevMonth.getMonth() - 1);
+                  onChange([prevMonth, endDate]);
+                }}
+              />
+              <CustomNextArrow
+                onClick={() => {
+                  const nextMonth = new Date(startDate);
+                  nextMonth.setMonth(nextMonth.getMonth() + 1);
+                  onChange([nextMonth, endDate]);
+                }}
+              />
+            </Arrow>
           </CalendarContainer>
           <ButtonBox>
             <span className="spanstyle">추천 기간</span>

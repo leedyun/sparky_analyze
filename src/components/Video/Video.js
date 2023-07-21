@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import {
   Title,
   VideoStyle,
@@ -19,7 +19,7 @@ const Video = () => {
   const [page, setPage] = useState(0);
   const pageSize = showAllRows ? 10 : 3;
   const totalPages = Math.ceil(VideoData.length / pageSize);
-  const visiblePages = 5; // Number of page numbers to display
+  const visiblePages = 5;
 
   const Data = useMemo(() => {
     const startIndex = page * pageSize;
@@ -73,7 +73,7 @@ const Video = () => {
     <div>
       <VideoStyleContainer responsive borderless>
         <thead>
-          <Title>
+          <Title className="title">
             <th>동영상</th>
             <th></th>
             <th></th>
@@ -83,30 +83,40 @@ const Video = () => {
         </thead>
         <tbody>
           {Data.map((tdata, index) => (
-            <VideoStyle key={index}>
-              <DataIndex>{index + 1 + page * pageSize}</DataIndex>
-              <Youtube></Youtube>
-              <Describe>{tdata.describe}</Describe>
-              <Participate>{tdata.participate}</Participate>
-              <Date>{tdata.date}</Date>
+            <VideoStyle key={index} className="videoStyle">
+              <DataIndex className="dataIndex">
+                {index + 1 + page * pageSize}
+              </DataIndex>
+              <Youtube className="youtube">
+                <img src="img.png" alt="img" className="image" />
+              </Youtube>
+              <Describe className="describe">{tdata.describe}</Describe>
+              <Participate className="participate">
+                {tdata.participate}
+              </Participate>
+              <Date className="date">{tdata.date}</Date>
             </VideoStyle>
           ))}
         </tbody>
       </VideoStyleContainer>
       <Sub>
         {!showAllRows ? (
-          <More onClick={handleShowAllRows}>
+          <More onClick={handleShowAllRows} className="more">
             더보기
             <img src={"/arrow.jpg"} alt="img" className="img" />
           </More>
         ) : (
           <>
-            <More onClick={handleHideAllRows}>
+            <More onClick={handleHideAllRows} className="more">
               간략히 보기
               <img src={"/upArrow.png"} alt="img" className="img" />
             </More>
             <div>
-              {page > 0 && <Index onClick={handlePrevPage}>&lt;</Index>}
+              {page > 0 && (
+                <Index className="index" onClick={handlePrevPage}>
+                  &lt;
+                </Index>
+              )}
               {generatePageNumbers()}
               {page < totalPages - 1 && (
                 <Index className="button" onClick={handleNextPage}>

@@ -3,7 +3,6 @@ import styled from "styled-components";
 const LetterStyle = styled.div`
   height: 120px;
   width: 100%;
-  flex-shrink: 1;
   border-radius: 3px;
   border: 1px solid #ebeff4;
   color: #090909;
@@ -17,7 +16,7 @@ const LetterStyle = styled.div`
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.3px;
-  min-width: 500px;
+  flex-wrap: wrap;
   span {
     color: rgba(234, 51, 35, 1);
   }
@@ -30,6 +29,15 @@ const LetterStyle = styled.div`
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.16px;
+  }
+  @media screen and (max-width: 760px) {
+    height: 100px;
+    font-size: 20px;
+    font-weight: 600;
+    p {
+      font-size: 10px;
+      font-weight: 300;
+    }
   }
 `;
 

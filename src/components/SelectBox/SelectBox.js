@@ -26,7 +26,7 @@ const SelectBox = () => {
         <img src="/downArrow.jpg" alt="img" />
       </Header>
       {isOpen && (
-        <ListContainer>
+        <ListContainer isOpen={isOpen}>
           <List>
             {options.map((option) => (
               <ListItem

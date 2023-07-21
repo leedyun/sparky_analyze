@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 import { format, eachDayOfInterval } from "date-fns";
+import "./Chart.css";
+import styled from "styled-components";
 
+const ChartContainer = styled.div`
+  height: 253px;
+  border-top: 1px solid #ebeff4;
+  padding-top: 15px;
+  font-size: 16px;
+  @media screen and (max-width: 480px) {
+    height: 200px;
+    font-size: 10px;
+  }
+`;
 const Chart = ({ startDate, endDate }) => {
   const initialData = [
     { date: new Date("2023-07-16"), value: 1 },
@@ -61,60 +73,80 @@ const Chart = ({ startDate, endDate }) => {
   const [chartData, setChartData] = useState(null);
 
   return (
-    <div
-      style={{
-        height: 253,
-        borderTop: "1px solid #EBEFF4",
-        paddingTop: 15,
-        minWidth: 500,
-      }}
-    >
+    <ChartContainer>
       {chartData && (
-        <ReactApexChart
-          options={{
-            chart: {
-              height: 300,
-              type: "area",
-              zoom: {
-                enabled: false,
-              },
-              toolbar: {
-                show: false,
-              },
-            },
-            dataLabels: {
-              enabled: false,
-            },
-            stroke: {
-              curve: "straight",
-            },
-            grid: {
-              row: {
-                colors: ["transparent"],
-                opacity: 1,
-              },
-            },
-            colors: ["#5100CE"],
-            yaxis: {
-              opposite: true,
-              forceNiceScale: true,
-            },
-            xaxis: {
-              type: "datetime",
-              categories: chartData.categories,
-              labels: {
-                formatter: function (value, timestamp, index) {
-                  return format(new Date(timestamp), "yyyy.MM.dd");
+        <>
+          <ReactApexChart
+            options={{
+              chart: {
+                height: 300,
+                type: "area",
+                zoom: {
+                  enabled: false,
+                },
+                toolbar: {
+                  show: false,
                 },
               },
-            },
-          }}
-          series={chartData.series}
-          type="area"
-          height={215}
-        />
+              dataLabels: {
+                enabled: false,
+              },
+              stroke: {
+                curve: "straight",
+              },
+              grid: {
+                row: {
+                  colors: ["transparent"],
+                  opacity: 1,
+                },
+              },
+              colors: ["#5100CE"],
+              yaxis: {
+                opposite: true,
+                forceNiceScale: true,
+              },
+              xaxis: {
+                type: "datetime",
+                categories: chartData.categories,
+                labels: {
+                  formatter: function (value, timestamp, index) {
+                    return format(new Date(timestamp), "yyyy.MM.dd");
+                  },
+                },
+              },
+              tooltip: {
+                y: {
+                  formatter: function (value) {
+                    return `${value}`;
+                  },
+                },
+                custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                  const date = chartData.categories[dataPointIndex];
+                  const value = chartData.series[0].data[dataPointIndex];
+                  return (
+                    '<div class="arrow_box">' +
+                    "<span class='date'>" +
+                    date +
+                    "</span>" +
+                    "<br> " +
+                    "<span class='value'>" +
+                    value +
+                    "</span>" +
+                    "</div>"
+                  );
+                },
+                marker: {
+                  show: false,
+                },
+              },
+            }}
+            series={chartData.series}
+            type="area"
+            height={215}
+          />
+        </>
       )}
-    </div>
+    </ChartContainer>
   );
 };
 

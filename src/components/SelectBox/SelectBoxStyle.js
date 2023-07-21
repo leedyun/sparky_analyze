@@ -9,7 +9,6 @@ export const SelectBoxStyle = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  width: 120px;
   height: 66px;
   align-items: center;
   color: var(--light-main-text, #090909);
@@ -19,12 +18,20 @@ export const Header = styled.div`
   font-weight: 700;
   line-height: normal;
   cursor: pointer;
+  @media screen and (max-width: 760px) {
+    height: 60px;
+    font-size: 14px;
+  }
+  @media screen and (max-width: 480px) {
+    height: 50px;
+    font-size: 12px;
+  }
 `;
 
 export const ListContainer = styled.div`
-  display: flex;
+  display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
   position: absolute;
-  top: 42px;
+  top: 85%;
   z-index: 1;
   width: 105px;
   height: 66px;

@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const PrimaryNav = styled.div`
-  width: 466.668px;
   height: 47px;
   display: flex;
+  }
 `;
 export const Menu = styled.button`
   margin: 1px;
   width: 116.667px;
   height: 47px;
-  flex-shrink: 0;
   background: #f5f6f8;
   color: var(--light-sub-text-icon, #334d6e);
   text-align: center;
@@ -25,7 +24,6 @@ export const Menu = styled.button`
   justify-content: center;
   cursor: pointer;
   border: none;
-
   &:hover,
   &:focus,
   &.active,
@@ -33,5 +31,18 @@ export const Menu = styled.button`
     border-radius: 3px 0px 0px 0px;
     background: var(--bg-2, #fcfcfc);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 97px;
+    height: 40px;
+    font-size: 13px;
+    font-weight: 650;
+  }
+  @media screen and (max-width: 480px) {
+    width: 80px;
+    height: 34px;
+    font-size: 10px;
+    font-weight: 600;
   }
 `;

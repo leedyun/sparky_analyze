@@ -9,6 +9,10 @@ export const Main = styled.div`
   line-height: normal;
   letter-spacing: 0.18px;
   margin-top: 36px;
+  @media screen and (max-width: 760px) {
+    font-size: 16px;
+    font-weight: 620;
+  }
 `;
 
 export const Sub = styled.div`
@@ -20,5 +24,8 @@ export const Sub = styled.div`
   line-height: normal;
   letter-spacing: 0.14px;
   margin-top: 12px;
-  min-width: 680px;
+  @media screen and (max-width: 760px) {
+    font-size: 11px;
+    font-weight: 330;
+  }
 `;

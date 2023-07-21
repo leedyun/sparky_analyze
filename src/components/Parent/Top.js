@@ -24,7 +24,7 @@ const Top = () => {
 
   return (
     <Container>
-      <Grid container spacing={12}>
+      <Grid container>
         <Grid item xs={6}>
           <SelectBox />
         </Grid>
@@ -36,7 +36,7 @@ const Top = () => {
           />
         </Grid>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item>
         {selectedMenu === "view" && (
           <LetterView startDate={startDate} endDate={endDate} />
         )}

@@ -1,7 +1,8 @@
 const VideoData = [
   {
-    video: "url(<path-to-image>), lightgray 50% / cover no-repeat, #c4c4c4;",
-    describe: "Table Tennis Rules Assignment",
+    video: "",
+    describe:
+      "Table Tennis Rules AssignmentTable Tennis Rules AssignmentTable Tennis Rules Assignment",
     participate: 756,
     date: "21.10.11",
   },

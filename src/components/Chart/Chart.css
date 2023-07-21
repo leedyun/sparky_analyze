@@ -1,0 +1,48 @@
+.ChartStyle {
+    height: 253;
+        border-top: 1px solid #EBEFF4;
+        padding-top: 15;
+}
+
+.apexcharts-tooltip {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 100px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: #f3f3f3;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    .date {
+        color: #090909;
+    font-size: 12px;
+    letter-spacing: 0.12px;
+    }
+    .value {
+        color: #5100ce;
+    font-size: 24px;
+    letter-spacing: 0.24px;
+    }
+  }
+  
+  .apexcharts-tooltip .date {
+    color: #090909;
+    font-size: 12px;
+    letter-spacing: 0.12px;
+  }
+  
+  .apexcharts-tooltip .value {
+    color: #5100ce;
+    font-size: 24px;
+    letter-spacing: 0.24px;
+  }
+
+  .arrow_Box {
+    display:flex;
+    justify-content: center;
+  }

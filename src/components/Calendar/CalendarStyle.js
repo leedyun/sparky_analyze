@@ -26,12 +26,33 @@ export const DateBox = styled.div`
   .past {
     font-weight: 700;
   }
+  @media screen and (max-width: 760px) {
+    font-size: 13px;
+    height: 60px;
+    .date {
+      font-weight: 350;
+    }
+    .past {
+      font-weight: 650;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 11px;
+    height: 50px;
+    .date {
+      font-weight: 300;
+    }
+    .past {
+      font-weight: 600;
+    }
+  }
 `;
 
 export const Box = styled.div`
   padding: 12px;
-  display: flex;
   position: absolute;
+  display: ${({ showCalendar }) => (showCalendar ? "flex" : "none")};
+  top: 100%;
   right: 0px;
   width: 1055px;
   height: 272px;
@@ -40,6 +61,10 @@ export const Box = styled.div`
   border: 1px solid #ebeff4;
   background: #f5f6f8;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  @media screen and (max-width: 760px) {
+    width: 500px;
+  }
 `;
 
 export const ButtonBox = styled.div`
@@ -201,5 +226,15 @@ export const CalendarContainer = styled.div`
     border: 1px solid #f5f6f8;
     pointer-events: none;
     visibility: hidden;
+  }
+`;
+export const Arrow = styled.div`
+  display: flex;
+  position: absolute;
+  top: 0;
+  justify-content: space-between;
+  width: 785px;
+  @media screen and (max-width: 760px) {
+    width: 250px;
   }
 `;
