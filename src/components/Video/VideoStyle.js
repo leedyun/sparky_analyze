@@ -48,6 +48,10 @@ export const VideoStyleContainer = styled.table`
     .date {
       display: none;
     }
+
+    .dataIndex {
+      font-size: 10px;
+    }
   }
 `;
 export const Title = styled.tr`
