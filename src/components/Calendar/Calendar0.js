@@ -93,8 +93,8 @@ const Calendar0 = ({ onDateRangeChange }) => {
   };
 
   return (
-    <CalendarStyle>
-      <DateBox onClick={handleCustomSelection}>
+    <CalendarStyle className="calendarStyle">
+      <DateBox className="dateBox" onClick={handleCustomSelection}>
         <div className="date">
           {formatDate(startDate)}
           &nbsp;~&nbsp;{formatDate(endDate || startDate)}
@@ -103,9 +103,10 @@ const Calendar0 = ({ onDateRangeChange }) => {
         <div className="past">지난 {getSelectedDays(startDate, endDate)}일</div>
       </DateBox>
       {showCalendar && (
-        <Box showCalendar={showCalendar}>
-          <CalendarContainer>
+        <Box className="box" showCalendar={showCalendar}>
+          <CalendarContainer className="calendarContainer">
             <DatePicker
+              className="datePicker"
               dateFormat="yyyy-MM-dd"
               selected={startDate}
               onChange={onChange}
@@ -126,6 +127,7 @@ const Calendar0 = ({ onDateRangeChange }) => {
                 ...props
               }) => (
                 <CustomHeader
+                  className="customHeader"
                   monthDate={monthDate}
                   prevMonthButtonDisabled={prevMonthButtonDisabled}
                   nextMonthButtonDisabled={nextMonthButtonDisabled}
@@ -135,8 +137,9 @@ const Calendar0 = ({ onDateRangeChange }) => {
               )}
               onMonthChange={handleMonthChange}
             />
-            <Arrow>
+            <Arrow className="arrow">
               <CustomPrevArrow
+                className="customPrevArrow"
                 onClick={() => {
                   const prevMonth = new Date(startDate);
                   prevMonth.setMonth(prevMonth.getMonth() - 1);
@@ -144,6 +147,7 @@ const Calendar0 = ({ onDateRangeChange }) => {
                 }}
               />
               <CustomNextArrow
+                className="customNextArrow"
                 onClick={() => {
                   const nextMonth = new Date(startDate);
                   nextMonth.setMonth(nextMonth.getMonth() + 1);
@@ -152,7 +156,7 @@ const Calendar0 = ({ onDateRangeChange }) => {
               />
             </Arrow>
           </CalendarContainer>
-          <ButtonBox>
+          <ButtonBox className="buttonBox">
             <span className="spanstyle">추천 기간</span>
             <button
               className="buttonstyle"

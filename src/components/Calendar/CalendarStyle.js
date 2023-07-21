@@ -4,6 +4,50 @@ export const CalendarStyle = styled.div`
   display: flex;
   position: relative;
   justify-content: flex-end;
+  @media screen and (max-width: 760px) {
+    .dateBox {
+      font-size: 13px;
+      height: 60px;
+      .date {
+        font-weight: 350;
+      }
+      .past {
+        font-weight: 650;
+      }
+    }
+
+    .box {
+      width: 500px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .dateBox {
+      font-size: 11px;
+      height: 50px;
+      .date {
+        font-weight: 300;
+      }
+      .past {
+        font-weight: 600;
+      }
+    }
+
+    .box {
+      width: 265px;
+      height: 500px;
+    }
+
+    .buttonBox {
+      left: 0;
+      bottom: 0;
+      margin-bottom: 5px;
+      margin-left: 15px;
+    }
+    buttonstyle {
+      width: 100%;
+    }
+  }
 `;
 
 export const DateBox = styled.div`
@@ -26,26 +70,6 @@ export const DateBox = styled.div`
   .past {
     font-weight: 700;
   }
-  @media screen and (max-width: 760px) {
-    font-size: 13px;
-    height: 60px;
-    .date {
-      font-weight: 350;
-    }
-    .past {
-      font-weight: 650;
-    }
-  }
-  @media screen and (max-width: 480px) {
-    font-size: 11px;
-    height: 50px;
-    .date {
-      font-weight: 300;
-    }
-    .past {
-      font-weight: 600;
-    }
-  }
 `;
 
 export const Box = styled.div`
@@ -62,9 +86,6 @@ export const Box = styled.div`
   background: #f5f6f8;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   z-index: 1;
-  @media screen and (max-width: 760px) {
-    width: 500px;
-  }
 `;
 
 export const ButtonBox = styled.div`

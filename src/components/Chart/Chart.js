@@ -2,18 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 import { format, eachDayOfInterval } from "date-fns";
 import "./Chart.css";
-import styled from "styled-components";
 
-const ChartContainer = styled.div`
-  height: 253px;
-  border-top: 1px solid #ebeff4;
-  padding-top: 15px;
-  font-size: 16px;
-  @media screen and (max-width: 480px) {
-    height: 200px;
-    font-size: 10px;
-  }
-`;
 const Chart = ({ startDate, endDate }) => {
   const initialData = [
     { date: new Date("2023-07-16"), value: 1 },
@@ -73,7 +62,7 @@ const Chart = ({ startDate, endDate }) => {
   const [chartData, setChartData] = useState(null);
 
   return (
-    <ChartContainer>
+    <div className="ChartContainer">
       {chartData && (
         <>
           <ReactApexChart
@@ -110,7 +99,21 @@ const Chart = ({ startDate, endDate }) => {
                 categories: chartData.categories,
                 labels: {
                   formatter: function (value, timestamp, index) {
-                    return format(new Date(timestamp), "yyyy.MM.dd");
+                    const date = new Date(timestamp);
+                    if (window.innerWidth <= 760) {
+                      return format(date, "yy.MM.dd");
+                    } else {
+                      return format(date, "yyyy.MM.dd");
+                    }
+                  },
+                  style: {
+                    fontSize: "13px",
+                    "@media screen and (max-width: 760px)": {
+                      fontSize: "10px",
+                    },
+                    "@media screen and (max-width: 480px)": {
+                      fontSize: "8px",
+                    },
                   },
                 },
               },
@@ -146,7 +149,7 @@ const Chart = ({ startDate, endDate }) => {
           />
         </>
       )}
-    </ChartContainer>
+    </div>
   );
 };
 
