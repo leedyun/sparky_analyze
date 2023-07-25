@@ -10,6 +10,8 @@ const Chart = ({ startDate, endDate }) => {
     { date: new Date("2023-07-18"), value: 3 },
     { date: new Date("2023-07-19"), value: 2 },
     { date: new Date("2023-07-20"), value: 1 },
+    { date: new Date("2023-07-21"), value: 0 },
+    { date: new Date("2023-07-24"), value: 0 },
     { date: new Date("2023-07-25"), value: 1 },
     { date: new Date("2023-07-26"), value: 2 },
     { date: new Date("2023-07-27"), value: 1 },
@@ -35,6 +37,7 @@ const Chart = ({ startDate, endDate }) => {
             end: formattedEndDate,
           })
         : [formattedStartDate];
+
       const mappedData = mapDataByDate(data);
 
       const chartData = dateRange.map((date) => {
@@ -55,8 +58,20 @@ const Chart = ({ startDate, endDate }) => {
       };
     };
 
+    let interval = 1;
+    if (startDate && endDate) {
+      const daysDifference = Math.ceil(
+        (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24)
+      );
+      if (daysDifference <= 5) {
+        interval = daysDifference;
+      } else {
+        interval = 6;
+      }
+    }
+
     const newData = generateChartData(startDate, endDate, initialData);
-    setChartData(newData);
+    setChartData({ ...newData, interval: interval });
   }, [startDate, endDate]);
 
   const [chartData, setChartData] = useState(null);
@@ -97,6 +112,7 @@ const Chart = ({ startDate, endDate }) => {
               xaxis: {
                 type: "datetime",
                 categories: chartData.categories,
+                tickAmount: chartData.interval,
                 labels: {
                   formatter: function (value, timestamp, index) {
                     const date = new Date(timestamp);
