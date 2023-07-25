@@ -64,9 +64,13 @@ const Chart = ({ startDate, endDate }) => {
         (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24)
       );
       if (daysDifference <= 5) {
-        interval = daysDifference;
+        if (daysDifference >= 3) {
+          interval = window.innerWidth <= 480 ? 3 : daysDifference;
+        } else {
+          interval = daysDifference;
+        }
       } else {
-        interval = 6;
+        interval = window.innerWidth <= 480 ? 3 : 6;
       }
     }
 
@@ -117,19 +121,10 @@ const Chart = ({ startDate, endDate }) => {
                   formatter: function (value, timestamp, index) {
                     const date = new Date(timestamp);
                     if (window.innerWidth <= 760) {
-                      return format(date, "yy.MM.dd");
+                      return format(date, "MM.dd");
                     } else {
                       return format(date, "yyyy.MM.dd");
                     }
-                  },
-                  style: {
-                    fontSize: "13px",
-                    "@media screen and (max-width: 760px)": {
-                      fontSize: "10px",
-                    },
-                    "@media screen and (max-width: 480px)": {
-                      fontSize: "8px",
-                    },
                   },
                 },
               },

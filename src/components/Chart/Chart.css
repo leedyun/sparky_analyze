@@ -13,12 +13,18 @@
   .ChartContainer {
     font-size: 10px;
   }
+  .ChartContainer .apexcharts-xaxis-label {
+    font-size: 10px;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .ChartContainer {
     height: 200px;
     font-size: 8px;
+  }
+  .ChartContainer .apexcharts-xaxis-label {
+    font-size: 9px;
   }
 }
 
